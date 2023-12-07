@@ -10,7 +10,7 @@ template_list = []
 count = 1
 
 for template in response:
-    if search in template['name'].lower().strip() or search in template['keywords']:
+    if search in template['name'].lower().strip() or [x.lower().strip() for x in template['keywords'] if search in x.lower().strip()]:
         template_list.append([template['name'], template['keywords'], template['blank'], template['id'], template['lines']])
 
 if template_list:
